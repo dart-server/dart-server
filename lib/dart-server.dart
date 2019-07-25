@@ -11,7 +11,6 @@ class DartServer {
     return _dartServer;
   }
   DartServer._internal();
-
   void use(middleware) {
     _middlewares.add(middleware);
   }
@@ -20,7 +19,9 @@ class DartServer {
     await for (var request in _server) {
       for (final middleware in _middlewares) {
         bool shouldBreak = true;
-        await middleware(req: DartServerRequest(request), res: DartServerResponse(request.response), next: () {
+        DartServerRequest req = DartServerRequest(request);
+        await req.parseDataAsync();
+        await middleware(req: req, res: DartServerResponse(request.response), next: () {
           shouldBreak = false;
         });
         if (shouldBreak) {

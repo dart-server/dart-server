@@ -1,6 +1,7 @@
-name: dart-server
+name: dart_server
 description: Dart Web Server.
 author: Mars <578595193@qq.com>
 homepage: https://github.com/dart-server/dart-server
 version: 0.0.1
 dependencies:
+  body_parser: any

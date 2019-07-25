@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:mirrors';
 
 class DartServerResponse {
-  var response;
+  HttpResponse response;
 
   final InstanceMirror _mirror;
   DartServerResponse(this.response): this._mirror = reflect(response);
