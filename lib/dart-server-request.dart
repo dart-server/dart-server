@@ -16,7 +16,8 @@ class DartServerRequest {
 
   HttpHeaders get headers => this.request.headers;
 
-  void parseDataAsync () async {
+  void analysisAsync () async {
+    // 参数处理
     this.query = request.uri.queryParameters ?? {};
     if (request.method != 'GET'){
       var result = await parseBody(request);

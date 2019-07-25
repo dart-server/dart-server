@@ -2,6 +2,16 @@ import 'dart:io';
 import '../lib/dart-server.dart';
 void main() async {
   var dartServer = DartServer();
+
+  dartServer.use(({req, res, next}) async {
+    print('income');
+    int start = DateTime.now().millisecondsSinceEpoch;
+    await next();
+    int ms = DateTime.now().millisecondsSinceEpoch - start;
+    print('X-Response-Time $ms ms');
+    print('outcome');
+  });
+
   dartServer.use(({req, res, next}) {
     req.params[3] = 5;
     print('-----------');

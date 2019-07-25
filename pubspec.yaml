@@ -5,3 +5,4 @@ homepage: https://github.com/dart-server/dart-server
 version: 0.0.1
 dependencies:
   body_parser: any
+  angel_route: ^3.0.6
